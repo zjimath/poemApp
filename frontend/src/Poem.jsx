@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const API_URL = "https://poemsapp-backend.onrender.com"
 const gradients = [
   "from-indigo-900 via-purple-900 to-black",
   "from-pink-500 via-red-500 to-yellow-500",
@@ -13,7 +14,6 @@ const gradients = [
   "from-sky-600 via-indigo-600 to-purple-700",
 ];
 
-
 function Poems() {
     const [poems, setPoems] = useState([]);
     const [currentPoem, setCurrentPoem] = useState(null);
@@ -23,7 +23,7 @@ function Poems() {
     useEffect(() => {
         async function fetchPoems() {
             try {
-                const response = await fetch("http://poemapp-backend.onrender.com/");
+                const response = await fetch(`${API_URL}/poem`);
                 const data = await response.json();
                 setPoems(data);
                 if (data.length > 0) {
