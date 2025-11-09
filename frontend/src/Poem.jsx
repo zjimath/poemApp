@@ -23,7 +23,7 @@ function Poems() {
     useEffect(() => {
         async function fetchPoems() {
             try {
-                const response = await fetch("/api/poem");
+                const response = await fetch("http://poemapp-backend.onrender.com/");
                 const data = await response.json();
                 setPoems(data);
                 if (data.length > 0) {
